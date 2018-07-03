@@ -1,4 +1,4 @@
-# Flutter MVP flutter framework
+# Flutter MVP framework
 
 A flutter MVP framework, written with coding practices applied in my other technology agnostic mobile development framework - jVanila.
 
