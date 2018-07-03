@@ -1,8 +1,8 @@
-# jvanila_flutter
+# Flutter MVP flutter framework
 
-A framework for Flutter development.
+A flutter MVP framework, written with coding practices applied in my other technology agnostic mobile development framework - jVanila.
 
-jVanila Flutter, showcases how to apply MVP pattern in depth. 
+The framework showcases how to apply MVP pattern in depth. 
 
 Check simple usage in https://github.com/pavan2you/jvanila_flutter/tree/master/helloworld
 
@@ -13,7 +13,7 @@ Check fullstack, MVP example https://github.com/pavan2you/jvanila_flutter/tree/m
 ## Getting Started
 
 Access the Wiki
-[jVanila Flutter Wiki](https://github.com/pavan2you/jvanila_flutter/wiki/What's-jVanila-Flutter).
+[Wiki](https://github.com/pavan2you/jvanila_flutter/wiki/What's-jVanila-Flutter).
 
 For help getting started with Flutter, view flutter online
 [documentation](https://flutter.io/).
