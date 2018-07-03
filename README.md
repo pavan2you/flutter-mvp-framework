@@ -12,8 +12,7 @@ Check fullstack, MVP example https://github.com/pavan2you/jvanila_flutter/tree/m
 
 ## Getting Started
 
-Access the Wiki
-[Wiki](https://github.com/pavan2you/flutter-mvp-framework/wiki/jVanila's-flutter-framework).
+Access [Wiki](https://github.com/pavan2you/flutter-mvp-framework/wiki/jVanila's-flutter-framework).
 
 For help getting started with Flutter, view flutter online
 [documentation](https://flutter.io/).
