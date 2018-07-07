@@ -48,13 +48,29 @@ class ContactListWidgetStateView extends PresentableStateView
   }
 
   @override
-  Widget loadView(BuildContext context) {
-    return new Scaffold(
-      appBar: widgetTree['appBar'],);
+  void setDataModel(List<Contact> list) {
+    widgetTree['listView'] = new ListView(
+      children: _buildContactList(list),
+    );
   }
 
   @override
-  void setDataModel(List<Contact> list) {
-    // TODO: implement setDataModel
+  Widget loadView(BuildContext context) {
+    return new Scaffold(
+      appBar: widgetTree['appBar'],
+      body: new Container(child: widgetTree['listView']),
+    );
   }
+
+  List<_ContactListItem> _buildContactList(List<Contact> list) {
+    return list.map((contact) => new _ContactListItem(contact)).toList();
+  }
+}
+
+class _ContactListItem extends ListTile {
+  _ContactListItem(Contact contact)
+      : super(
+            title: new Text(contact.fullName),
+            subtitle: new Text(contact.email),
+            leading: new CircleAvatar(child: new Text(contact.fullName[0])));
 }

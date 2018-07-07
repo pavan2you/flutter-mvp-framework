@@ -19,6 +19,7 @@
 
 library app;
 
+import 'package:flutter/material.dart';
 import 'package:jvanila_flutter/jvanila.dart';
 
 export 'application_widget.dart';
@@ -26,4 +27,49 @@ export 'routing.dart';
 
 void runApplication(IApplicationView view) {
   Routing.runAppWidget(new ApplicationWidget(view));
+}
+
+void runMaterialApp(IApplicationView view) {
+  Routing.runAppWidget(new MaterialApplication(view));
+}
+
+void runMaterialAppWith(String initialRoute,
+    Map<String, WidgetBuilder> routes) {
+
+  Routing.runAppWidget(new MaterialApplication(null,
+    initialRoute: initialRoute, routes: routes,));
+}
+
+class MaterialApplication extends StatelessWidget {
+
+  final ApplicationView view;
+
+  final String initialRoute;
+
+  final Map<String, WidgetBuilder> routes;
+
+  MaterialApplication(this.view, {this.initialRoute, this.routes});
+
+  @override
+  Widget build(BuildContext context) {
+    if (routes != null) {
+      return new MaterialApp(
+          title: 'Material Application',
+          theme: new ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: initialRoute,
+        routes: routes,
+      );
+    }
+    else {
+      return new MaterialApp(
+          title: 'Material Application',
+          theme: new ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: new ApplicationWidget(view)
+      );
+    }
+  }
 }

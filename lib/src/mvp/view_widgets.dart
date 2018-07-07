@@ -80,7 +80,7 @@ class ElementHolder {
 abstract class RefreshableStateWidget extends StatefulWidget
     implements IRefreshable {
 
-  final StateHolder stateHolder = new StateHolder();
+  final RefreshableStateHolder stateHolder = new RefreshableStateHolder();
 
   State createState() => stateHolder.state = createRefreshableState();
 
@@ -93,7 +93,7 @@ abstract class RefreshableStateWidget extends StatefulWidget
   RefreshableState<StatefulWidget> createRefreshableState();
 }
 
-class StateHolder<T extends StatefulWidget> {
+class RefreshableStateHolder<T extends RefreshableStateWidget> {
   RefreshableState<T> state;
 }
 

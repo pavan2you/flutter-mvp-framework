@@ -34,6 +34,8 @@ abstract class IContactListView extends IPresentableView {
 
 class ContactListPresenter extends Presenter<IContactListView> {
 
+  List<Contact> _contactList;
+
   ContactListPresenter(IContactListView view) : super(view);
 
   @override
@@ -53,7 +55,13 @@ class ContactListPresenter extends Presenter<IContactListView> {
   @override
   void onReady() {
     view.setTitle("Contacts");
-    _loadModel();
+
+    if (_contactList == null || _contactList.isEmpty) {
+      _loadModel();
+    }
+    else {
+      _showListOrInfo(_contactList);
+    }
   }
 
   Future<Null> _loadModel() async {
@@ -68,8 +76,13 @@ class ContactListPresenter extends Presenter<IContactListView> {
       gateway.fireReadListRequest();
     }
     else {
-      _showListOrInfo(contacts);
+      _refreshWith(contacts);
     }
+  }
+
+  void _refreshWith(List<Contact> list) {
+    _contactList = list;
+    view.refresh();
   }
 
   void _showListOrInfo(List<Contact> list) {
@@ -86,7 +99,7 @@ class ContactListPresenter extends Presenter<IContactListView> {
   }
 
   void onReadContactsSuccess(DataObjectList<Contact> objectList) {
-    _showListOrInfo(objectList.list);
+    _refreshWith(objectList.list);
   }
 
   @override

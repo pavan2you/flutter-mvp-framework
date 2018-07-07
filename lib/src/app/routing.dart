@@ -25,12 +25,32 @@ class Routing {
     runApp(app);
   }
 
+  static Map<Type, Widget> _widgets = new Map();
+  static List<Widget> _stack = <Widget>[];
+
   static void push(BuildContext context, Widget widget) {
     PageRoute nextPage = new MaterialPageRoute(
       builder: (context) => widget,
     );
 
+    _widgets[widget.runtimeType] = widget;
+    _stack.add(widget);
+
     Navigator.of(context).push(nextPage);
   }
-  
+
+  static void pop(BuildContext context, Type widgetType) {
+    PageRoute nextPage = new MaterialPageRoute(
+      builder: (context) => null,
+    );
+
+    RoutePredicate predicate = (Route<dynamic> route) => route == nextPage;
+    Navigator.of(context).popUntil(predicate);
+  }
+
+  static void popWithResult(BuildContext context, Type widgetType,
+      Widget from, Object result) {
+    Widget widget = _widgets[widgetType];
+  }
+
 }

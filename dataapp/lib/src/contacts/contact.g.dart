@@ -26,9 +26,9 @@ part of 'contact.dart';
 // **************************************************************************
 
 Contact _$ContactFromJson(Map<String, dynamic> json) => new Contact(
-    fullName: json['fullName'] as String, email: json['email'] as String)
+    fullName: _toFullName(json), email: json['email'] as String)
   ..crudOperation = json['crudOperation'] as String
-  ..contactId = json['contactId'] as String;
+  ..contactId = json['cell'] as String;
 
 abstract class _$ContactSerializerMixin {
   String get crudOperation;
@@ -41,4 +41,14 @@ abstract class _$ContactSerializerMixin {
         'fullName': fullName,
         'email': email
       };
+}
+
+String _toFullName(Map<String, dynamic> json) {
+  Map<String, dynamic> name = json['name'] as Map<String, dynamic>;
+
+  String title = name["title"];
+  String first = name["first"];
+  String last = name["last"];
+
+  return title + " " + first + " " + last;
 }
