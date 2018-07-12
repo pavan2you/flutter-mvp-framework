@@ -21,8 +21,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:jvanila_flutter/src/injection/contextify.dart';
-import 'package:jvanila_flutter/src/mvp/application_presenter.dart';
 import 'package:jvanila_flutter/src/injection/injector.dart';
+import 'package:jvanila_flutter/src/mvp/application_presenter.dart';
 import 'package:jvanila_flutter/src/mvp/mvp.dart';
 import 'package:jvanila_flutter/src/sqlite/sqlite.dart';
 
@@ -40,7 +40,9 @@ abstract class ApplicationView extends PresentableView
 
   Injector injector;
 
-  ApplicationView([BuildContext context]) : super(context);
+  Map<String, WidgetBuilder> routes;
+
+  ApplicationView({BuildContext context, this.routes}) : super(context);
 
   void create() {
     injector = newInjector(new ApplicationContext());
@@ -92,8 +94,11 @@ abstract class ApplicationView extends PresentableView
     return null;
   }
 
+  ///
+  /// Override this if more args need to supply to [MaterialApp]
+  ///
   @override
   Widget loadView(BuildContext context) {
-    return new MaterialApp(home: widgetTree["home"]);
+    return new MaterialApp(home: widgetTree["home"], routes: routes,);
   }
 }

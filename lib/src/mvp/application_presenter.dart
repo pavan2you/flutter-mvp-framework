@@ -47,7 +47,7 @@ class ApplicationPresenter<V extends IApplicationView> extends Presenter<V> {
 
   Future<dynamic> loadLaunchTimeDependencies() async {
      await view.loadLaunchTimeDependencies();
-      onApplicationReady();
+     onApplicationReady();
   }
   
   @override

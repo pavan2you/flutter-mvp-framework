@@ -142,11 +142,12 @@ abstract class View implements IView {
   /// the following [StatefulWidget.build] call.
   ///
   load() {
-    if (this.context == null) {
-      throw Exception("ContextNotInitiatisedException");
+    if (this.context != null) {
+      builtWidget = loadView(context);
     }
-
-    builtWidget = loadView(context);
+    else {
+      print("Ignored {$this}.load");
+    }
   }
 
   ///
