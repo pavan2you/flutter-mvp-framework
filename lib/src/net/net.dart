@@ -25,3 +25,5 @@ export 'net_response.dart';
 export 'net_response_event.dart';
 export 'network_accessor.dart';
 export 'remote_repository.dart';
+export 'fetch_request.dart';
+export 'header_builder.dart';

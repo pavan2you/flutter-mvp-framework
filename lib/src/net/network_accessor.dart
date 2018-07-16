@@ -127,7 +127,12 @@ class NetworkDispatcher {
 
     if (accessor.networkAvailable) {
       if (request.isHttp) {
-        accessor.headerBuilder.build(request);
+        if (request.headerBuilder != null) {
+          request.headerBuilder.build(request);
+        }
+        else {
+          accessor.headerBuilder.build(request);
+        }
         response = await httpGateway.serveRequest(request);
       }
       else {

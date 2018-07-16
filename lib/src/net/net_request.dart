@@ -21,6 +21,7 @@ import 'dart:convert';
 
 import 'package:jvanila_flutter/src/data/data.dart';
 import 'package:jvanila_flutter/src/injection/contextify.dart';
+import 'package:jvanila_flutter/src/net/header_builder.dart';
 
 class NetRequest extends DataObject implements Comparable<NetRequest> {
 
@@ -64,6 +65,8 @@ class NetRequest extends DataObject implements Comparable<NetRequest> {
   final RedirectPolicy redirectPolicy;
 
   final PollingPolicy pollingPolicy;
+
+  HeaderBuilder headerBuilder;
 
   NetRequest(this.requestId, this.createdAt, this.delegateType, this.endPoint,
       this.payload, this.requestPolicy, this.responsePolicy, this.retryPolicy,
