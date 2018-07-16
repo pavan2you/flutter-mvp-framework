@@ -47,4 +47,6 @@ class ApplicationContext {
   RepositoryFactory repoFactory;
 
   EventBus eventBus;
+
+  Map<String, dynamic> apis;
 }

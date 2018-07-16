@@ -42,6 +42,7 @@ class Injector {
     injectEventBus();
     injectDiskAccessor();
     injectNetworkAccessor();
+    injectApisOnAppCreate();
   }
 
   injectEventBus() {
@@ -64,6 +65,7 @@ class Injector {
      */
     context.database = database;
     injectRepoFactory(database);
+    injectApisOnReady();
   }
 
   injectRepoFactory(SqliteDatabase database) {
@@ -75,6 +77,30 @@ class Injector {
   ///
   RepositoryFactory newRepoFactory() {
     return null;
+  }
+
+  ///
+  /// Must Override to customize
+  ///
+  /// When app created,
+  /// Any third party app specific APIs can be initialised here.
+  ///
+  /// ex : My3rdPartyService _my3rdPartyService = new My3rdPartyService(...)
+  /// context.apis['My3rdPartyService'] = _my3rdPartyService;
+  ///
+  void injectApisOnAppCreate() {
+  }
+
+  ///
+  /// Must Override to customize
+  ///
+  /// When app resolved dependencies and it is ready,
+  /// Any third party app specific APIs can be initialised here.
+  ///
+  /// ex : My3rdPartyService _my3rdPartyService = new My3rdPartyService(...)
+  /// context.apis['My3rdPartyService'] = _my3rdPartyService;
+  ///
+  void injectApisOnReady() {
   }
 }
 
