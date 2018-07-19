@@ -123,4 +123,5 @@ class DataObjectList<T extends DataObject> extends DataObject {
 
   DataObjectList(this.list);
 
+  Type get enclosedType => T;
 }

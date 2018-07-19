@@ -29,3 +29,7 @@ String name(Type type) {
 }
 
 void nullMethod() => {};
+
+enumLabel(var _enum) {
+  return "${_enum.toString().substring(_enum.toString().indexOf('.') + 1)}";
+}
