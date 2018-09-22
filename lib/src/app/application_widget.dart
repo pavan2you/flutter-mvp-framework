@@ -42,7 +42,12 @@ abstract class ApplicationView extends PresentableView
 
   Map<String, WidgetBuilder> routes;
 
-  ApplicationView({BuildContext context, this.routes}) : super(context);
+  ApplicationView({BuildContext context, this.routes}) : super(context) {
+    if (routes == null) {
+      routes = <String, WidgetBuilder> {
+      };
+    }
+  }
 
   void create() {
     injector = newInjector(new ApplicationContext());
