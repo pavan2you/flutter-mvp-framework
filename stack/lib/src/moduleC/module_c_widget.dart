@@ -51,7 +51,7 @@ class ModuleCView extends PresentableView implements IModuleCView {
 
   @override
   void showModuleAView(String fromLabel) {
-    Navigator.popUntil(context, ModalRoute.withName('/ModuleCWidget'));
+    Navigator.popUntil(context, ModalRoute.withName('/moduleA'));
   }
 
   @override
