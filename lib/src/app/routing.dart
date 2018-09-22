@@ -31,6 +31,8 @@ class Routing {
   static void push(BuildContext context, Widget widget) {
     PageRoute nextPage = new MaterialPageRoute(
       builder: (context) => widget,
+      settings: new RouteSettings(name : "/" + widget.runtimeType.toString(),
+          isInitialRoute: false)
     );
 
     _widgets[widget.runtimeType] = widget;
@@ -42,9 +44,26 @@ class Routing {
   static void pop(BuildContext context, Type widgetType) {
     PageRoute nextPage = new MaterialPageRoute(
       builder: (context) => null,
+      settings: new RouteSettings(name : "/" + widgetType.toString(),
+            isInitialRoute: false),
     );
 
-    RoutePredicate predicate = (Route<dynamic> route) => route == nextPage;
+    RoutePredicate predicate = (Route<dynamic> route) =>
+      route.settings.name == nextPage.settings.name;
+
+    Navigator.of(context).popUntil(predicate);
+  }
+
+  static void popToRoot(BuildContext context) {
+    PageRoute nextPage = new MaterialPageRoute(
+      builder: (context) => null,
+      settings: new RouteSettings(name : "/",
+          isInitialRoute: true),
+    );
+
+    RoutePredicate predicate = (Route<dynamic> route) =>
+    route.settings.name == nextPage.settings.name;
+
     Navigator.of(context).popUntil(predicate);
   }
 

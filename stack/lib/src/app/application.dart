@@ -19,6 +19,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jvanila_flutter/jvanila.dart';
+import 'package:stack/src/moduleB/module_b_widget.dart';
 
 class StackApplication extends ApplicationView {
 
@@ -55,9 +56,10 @@ class RootWidget extends StatelessWidget {
         child: RaisedButton(
           child: Text('Second'),
           onPressed: () {
+            Routing.push(context, new ModuleBWidget(new ModuleBView()));
             // Navigate to the second screen using a named route
 //            Navigator.pushNamed(context, '/moduleA');
-            Navigator.pushReplacementNamed(context, '/moduleA');
+//            Navigator.pushReplacementNamed(context, '/moduleA');
           },
         ),
       ),

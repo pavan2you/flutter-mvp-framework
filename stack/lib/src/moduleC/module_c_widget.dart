@@ -20,10 +20,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jvanila_flutter/jvanila.dart';
-import 'package:stack/src/moduleA/module_a_presenter.dart';
-import 'package:stack/src/moduleA/module_a_widget.dart';
-import 'package:stack/src/moduleB/module_b_presenter.dart';
-import 'package:stack/src/moduleB/module_b_widget.dart';
 import 'package:stack/src/moduleC/module_c_presenter.dart';
 
 class ModuleCWidget extends RefreshableWidget {
@@ -51,7 +47,11 @@ class ModuleCView extends PresentableView implements IModuleCView {
 
   @override
   void showModuleAView(String fromLabel) {
-    Navigator.popUntil(context, ModalRoute.withName('/moduleA'));
+    //for dynamic routing
+    Routing.popToRoot(context);
+
+    //for static routing
+    //Navigator.popUntil(context, ModalRoute.withName('/moduleA'));
   }
 
   @override

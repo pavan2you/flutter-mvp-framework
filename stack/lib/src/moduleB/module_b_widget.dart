@@ -48,8 +48,11 @@ class ModuleBView extends PresentableView implements IModuleBView {
 
   @override
   void showModuleCView() {
-//    Routing.push(context, new ModuleCWidget(new ModuleCView()));
-    Navigator.pushNamed(context, '/moduleC');
+    //for dynamic routing
+    Routing.push(context, new ModuleCWidget(new ModuleCView()));
+
+    //for static routing
+    //Navigator.pushNamed(context, '/moduleC');
   }
 
   @override
