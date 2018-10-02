@@ -10,6 +10,8 @@ Check an indepth usage in https://github.com/pavan2you/jvanila_flutter/tree/mast
 
 Check fullstack, MVP example https://github.com/pavan2you/jvanila_flutter/tree/master/dataapp
 
+Check Routing / Navigation example https://github.com/pavan2you/flutter-mvp-framework/tree/master/stack. The dynamic route poping is little tricky in flutter, this solves that problem.
+
 ## Getting Started
 
 Access [Wiki](https://github.com/pavan2you/flutter-mvp-framework/wiki/jVanila's-flutter-framework).
