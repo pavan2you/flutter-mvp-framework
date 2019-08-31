@@ -34,6 +34,7 @@ abstract class Processor<V extends IView> {
 
   void onCreate() {
     context = Contextify.context;
+    print("LauchDebug : page : onCreate - " + this.runtimeType.toString());
   }
 
   ///
@@ -55,9 +56,16 @@ abstract class Presenter<V extends IPresentableView> extends Processor<V>
   Presenter(V view) : super(view);
 
   void onLoad() {
+    print("LauchDebug : page : onLoad " + this.runtimeType.toString());
     bool appReady = Contextify.context.application.appReady;
     if (appReady) {
+      print("LauchDebug : page : onLoad-onReady - trigger "
+          + this.runtimeType.toString());
       onReady();
+    }
+    else {
+      print("LauchDebug : page : onLoad-onReady - await "
+          + this.runtimeType.toString());
     }
   }
 

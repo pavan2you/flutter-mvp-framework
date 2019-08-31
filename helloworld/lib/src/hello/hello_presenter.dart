@@ -35,7 +35,14 @@ class HelloWorldPresenter extends Presenter<IHelloWorldView> {
   HelloWorldPresenter(IHelloWorldView view) : super(view);
 
   @override
+  void onCreate() {
+    print("LauchDebug : page : onCreate");
+    super.onCreate();
+  }
+
+  @override
   void onReady() {
+    print("LauchDebug : page : onReady");
     view.setTitle("Hello..");
     counter++;
     view.setContent('Hello World, $counter times');

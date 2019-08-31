@@ -86,10 +86,17 @@ abstract class ApplicationView extends PresentableView
     if (params != null) {
       database = SqliteDatabase(params: params);
       await database.open();
+      injector.injectDataAccessors(database);
+    }
+    else {
+      //todo : for now it is okay, but we've to remove this
+      //todo : remove LauchDebug pirnts or get TraceDebug
+      await new Future.delayed(const Duration(seconds: 5), () {
+        print("LauchDebug : after fake await");
+      });
     }
 
-    injector.injectDataAccessors(database);
-    return database;
+    return null;
   }
 
   ///

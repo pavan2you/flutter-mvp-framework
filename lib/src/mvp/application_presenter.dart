@@ -40,17 +40,21 @@ class ApplicationPresenter<V extends IApplicationView> extends Presenter<V> {
 
   @override @mustCallSuper
   void onCreate() {
+    print("LauchDebug : app : onCreate");
     super.onCreate();
     view.appReady = false;
   }
 
   Future<dynamic> loadLaunchTimeDependencies() async {
+    print("LauchDebug : app : loadLaunchTimeDependencies");
      await view.loadLaunchTimeDependencies();
+     print("LauchDebug : afer dependencies loaded");
      onApplicationReady();
   }
   
   @override
   void onLoad() {
+    print("LauchDebug : app : onLoad");
     onReady();
     if (!view.appReady) {
       loadLaunchTimeDependencies();
@@ -59,11 +63,13 @@ class ApplicationPresenter<V extends IApplicationView> extends Presenter<V> {
 
   @override
   void onReady() {
+    print("LauchDebug : app : onReady");
     view.setHomeView();
   }
 
   @mustCallSuper
   void onApplicationReady() {
+    print("LauchDebug : app : onApplicationReady");
     view.appReady = true;
     view.refresh();
   }

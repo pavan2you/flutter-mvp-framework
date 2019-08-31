@@ -48,6 +48,16 @@ class Routing {
             isInitialRoute: false),
     );
 
+    //pop stack till widgetType is found
+    for (int i = _stack.length - 1; i >= 0; i--) {
+      Widget widget = _stack[i];
+      if (widget.runtimeType != widgetType) {
+        _stack.removeAt(i);
+        _widgets.remove(widget.runtimeType);
+      }
+      break;
+    }
+
     RoutePredicate predicate = (Route<dynamic> route) =>
       route.settings.name == nextPage.settings.name;
 
@@ -72,4 +82,22 @@ class Routing {
     Widget widget = _widgets[widgetType];
   }
 
+  static void replaceTop(BuildContext context, Widget widget) {
+    PageRoute nextPage = new MaterialPageRoute(
+        builder: (context) => widget,
+        settings: new RouteSettings(name : "/" + widget.runtimeType.toString(),
+            isInitialRoute: false)
+    );
+
+    if (_stack.length > 0) {
+      Widget top = _stack.last;
+      _widgets.remove(top.runtimeType);
+      _stack.removeLast();
+    }
+
+    _widgets[widget.runtimeType] = widget;
+    _stack.add(widget);
+
+    Navigator.of(context).pushReplacement(nextPage);
+  }
 }
